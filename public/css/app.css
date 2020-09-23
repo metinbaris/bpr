@@ -1,7 +1,6 @@
-html {
-    overflow-x: hidden;
-}
-
-body {
-    background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
-}
+@import "main.css";
+@import "layouts.css";
+@import "contact_form.css";
+/**Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Varela&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');

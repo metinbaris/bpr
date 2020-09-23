@@ -1,0 +1,103 @@
+.contactForm {
+    margin-left: auto;
+    margin-right: auto;
+    width: 55%;
+    display: grid;
+    margin-top: 2%;
+    grid-template-areas: "contact message" "... button";
+    grid-template-rows: 22em 2em;
+    grid-template-columns: 16em 1fr;
+    grid-gap: .8em;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    padding: 1.2em;
+    box-shadow: 3px 4px rgba(166, 166, 166, 0.24);
+}
+
+.contactForm label {
+    font-family: 'Lora', serif;
+    grid-area: labels;
+    line-height: 30px;
+    font-size: 18px;
+    color: #1c044b;
+}
+
+.contactForm input {
+    box-sizing: border-box;
+    grid-area: contact;
+    width: 100%;
+    padding: 1.1em;
+    border: none;
+    margin-bottom: 1em;
+    border-radius: 6px;
+    outline: none;
+}
+
+.contactForm textarea {
+    grid-area: contact;
+    outline: none;
+    resize: none;
+    box-sizing: border-box;
+    border-radius: 6px;
+    min-height: 87%;
+    width: 100%;
+    border: none;
+}
+
+.contactForm select {
+    outline: none;
+    width: 100%;
+    border: none;
+    margin-bottom: 1em;
+    border-radius: 6px;
+    border-radius: 6px;
+    height: 40px;
+    font-size: 16px;
+}
+
+
+#contact-details {
+    grid-area: contact;
+}
+
+#message-box {
+    grid-area: message;
+}
+
+.contactForm button {
+    grid-area: button;
+    border-radius: 7px;
+    border: none;
+    background: rgba(65, 11, 162, 0.67);
+    color: white;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
+}
+
+.contactForm #enquiry_dependent {
+    display: none;
+}
+
+.contactForm button:hover {
+    transition: all ease 0.8s;
+    background-color: #410BA2
+}
+
+@media screen and (max-width: 864px) {
+    .contactForm {
+        width: 90%;
+        display: block;
+    }
+
+    .contactForm textarea {
+        min-height: 140px;
+    }
+
+    .contactForm button {
+        width: 100%;
+        min-height: 35px;
+        margin-top: 20px;
+    }
+}
