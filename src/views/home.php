@@ -15,7 +15,7 @@
         unset($_SESSION[ 'flash_message' ]);
     }
     ?>
-    <form class="contactForm" action="submit-contact-form" method="post">
+    <form class="contactForm" action="submit-customer-enquiry" method="post">
         <div id="contact_details">
             <label for="customer_name">Name*</label>
             <input type="text" name="customer_name" placeholder="Name"

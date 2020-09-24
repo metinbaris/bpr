@@ -14,7 +14,7 @@ class Route
             ]
         );
         $router->get('/', 'HomePageController@index');
-        $router->post('submit-contact-form', 'ContactFormController@submitCustomerMessage');
+        $router->post('submit-customer-enquiry', 'ContactFormController@submitCustomerEnquiry');
         $router->get('enquiry-successfully-saved', 'EnquiryStoredPage@index');
 
         $router->run();
