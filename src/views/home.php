@@ -11,10 +11,11 @@
 <div class="container">
     <?php
     if (! empty($_SESSION[ 'flash_message' ])) {
-        echo $_SESSION[ 'flash_message' ];
+        echo '<div id="flash-message" class="text-center flash-message">' . $_SESSION[ 'flash_message' ] . '!';
         unset($_SESSION[ 'flash_message' ]);
     }
     ?>
+    </div>
     <form class="contactForm" action="submit-customer-enquiry" method="post">
         <div id="contact_details">
             <label for="customer_name">Name*</label>
@@ -51,6 +52,13 @@
   function toggleOrderNumber () {
     document.getElementById('enquiry_type_dependent').classList.toggle('hidden')
   }
+
+  setTimeout(function () {
+    let flashMessage = document.getElementById('flash-message')
+    if (flashMessage != null) {
+      flashMessage.classList.toggle('hidden')
+    }
+  }, 3500)
 </script>
 </body>
 </html>

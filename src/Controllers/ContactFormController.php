@@ -29,7 +29,7 @@ class ContactFormController extends BaseController
         if ($this->contactFormValidator->validate($_POST)) {
             session_start();
             $_SESSION[ 'customerName' ] = $_POST[ 'customer_name' ];
-            // $this->store($_POST);
+            $this->store($_POST);
             header('Location: /enquiry-successfully-saved');
         } else {
             $this->view('home', $_POST);

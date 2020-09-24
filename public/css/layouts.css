@@ -1,3 +1,11 @@
 .pt-40 {
     padding-top: 40px;
 }
+
+.flash-message {
+    color: #ff001d;
+    font-family: 'Varela', sans-serif;
+    font-size: 24px;
+    line-height: 50px;
+    background-color: rgba(250, 255, 255, 0.27);
+}
