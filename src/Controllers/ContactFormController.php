@@ -23,12 +23,22 @@ class ContactFormController extends BaseController
         $this->enquiry = new Enquiry();
     }
 
-    /** Contact Form Submission*/
+    /** Contact form submission*/
     public function submitCustomerMessage()
     {
-        if (! $this->contactFormValidator->validate($_POST)) {
-            $this->view('home');
+        if ($this->contactFormValidator->validate($_POST)) {
+            $this->store($_POST);
+            header('Location: /enquiry-successfully-saved');
         }
-        //$this->view('contact_form_success');
+
+        $this->view('home', $_POST);
+    }
+
+    /**
+     * @param array $array
+     */
+    protected function store($array)
+    {
+        $this->database()->insert($this->enquiry->getTableName(), $array);
     }
 }

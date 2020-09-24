@@ -15,6 +15,7 @@ class BaseFormValidator
      */
     protected function checkInputIsEmpty($value, $inputName)
     {
+        var_dump($value);
         if (empty($value)) {
             throw new Exception("$inputName field is empty please fill it");
         }

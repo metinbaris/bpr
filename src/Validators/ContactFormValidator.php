@@ -16,9 +16,11 @@ class ContactFormValidator extends BaseFormValidator implements ValidatorInterfa
     {
         try {
             $this->formValidate($array);
+
             return true;
         } catch (Exception $e) {
             $_SESSION[ 'flash_message' ] = $e->getMessage();
+
             return false;
         }
     }
@@ -32,7 +34,8 @@ class ContactFormValidator extends BaseFormValidator implements ValidatorInterfa
         $this->validateCustomerName($array[ 'customer_name' ]);
         $this->validateEmailAddress($array[ 'email_address' ]);
         $this->checkInputIsEmpty($array[ 'message' ], 'Message');
-        $this->checkInputIsEmpty($array[ 'terms_and_conditions' ], 'Terms and Conditions checkbox');
+        $this->checkInputIsEmpty(isset($array[ 'terms_and_conditions' ]) ? $array[ 'terms_and_conditions' ] : [],
+            'Terms and Conditions checkbox');
         $this->validateOrderNumberAndEnquiryType($array[ 'enquiry_type' ], $array[ 'order_number' ]);
     }
 

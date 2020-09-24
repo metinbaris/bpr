@@ -1,0 +1,8 @@
+.successMessage p {
+    font-size: 38px;
+    text-align: center;
+    margin: 60px auto;
+    font-family: 'Varela', sans-serif;
+    text-shadow: 1px 1px #410BA2;
+    color: white;
+}
