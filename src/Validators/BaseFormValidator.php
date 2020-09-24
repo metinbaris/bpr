@@ -5,7 +5,7 @@ namespace BasicFormApp\Validators;
 
 use Exception;
 
-class FormValidator
+class BaseFormValidator
 {
     /**
      * @param string $value

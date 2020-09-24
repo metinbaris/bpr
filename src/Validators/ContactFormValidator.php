@@ -6,7 +6,7 @@ use BasicFormApp\Models\Enquiry;
 use BasicFormApp\Traits\ErrorPage;
 use Exception;
 
-class ContactFormValidator extends FormValidator implements ValidatorInterface
+class ContactFormValidator extends BaseFormValidator implements ValidatorInterface
 {
     /**
      * @param array $array
