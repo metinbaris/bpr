@@ -17,6 +17,8 @@
     }
   },
   "require": {
-    "bramus/router": "^1.4"
+    "php-di/php-di": "^5.4",
+    "vlucas/phpdotenv": "^4.1",
+    "izniburak/router": "^1.5"
   }
 }
