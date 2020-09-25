@@ -12,9 +12,10 @@ class NewEnquiryMail
     protected $subject = 'New customer enquiry';
 
     /**
-     * @param Enquiry $enquiry
+     * @param $enquiry
+     * @return bool
      */
-    public function sendMail($enquiry)
+    public function sendMail(Enquiry $enquiry)
     {
         $mail = new PHPMailer(true);
         try {
@@ -36,18 +37,20 @@ class NewEnquiryMail
             $mail->Subject = $this->subject;
             $mail->Body = $this->getBody($enquiry);
             //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
+            ob_start();
             $mail->send();
+            ob_end_flush();
+
+            return true;
         } catch (Exception $e) {
-            var_dump("Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
-            exit();
+            return false;
         }
     }
 
     /**
      * @param PHPMailer $mail
      */
-    private function setMailServerSettings($mail)
+    private function setMailServerSettings(PHPMailer $mail)
     {
         $mail->SMTPDebug = SMTP::DEBUG_SERVER;// Enable verbose debug output
         $mail->isSMTP();// Send using SMTP
@@ -63,7 +66,7 @@ class NewEnquiryMail
      * @param Enquiry $enquiry
      * @return string
      */
-    private function getBody($enquiry)
+    private function getBody(Enquiry $enquiry)
     {
         $orderNumber = $enquiry->getOrderNumber();
         $orderNumber = empty($orderNumber) ? '' : '<strong> | Order Number : </strong>' . $orderNumber;

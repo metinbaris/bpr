@@ -21,4 +21,18 @@ class BaseFormValidator
 
         return true;
     }
+
+    /**
+     * @param mixed $value
+     * @return bool
+     * @throws Exception
+     */
+    protected function isNumeric($value)
+    {
+        if (!is_numeric($value)) {
+            throw new Exception("$value is not numeric");
+        }
+
+        return true;
+    }
 }

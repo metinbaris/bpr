@@ -79,6 +79,7 @@ class ContactFormValidator extends BaseFormValidator implements ValidatorInterfa
         $this->validateEnquiryType($enquiryType);
         if ($enquiryType === Enquiry::Type_of_Enquiry_Regarding_An_Order) {
             $this->checkInputIsEmpty($orderNumber, 'Order Number');
+            $this->isNumeric($orderNumber);
         }
     }
 

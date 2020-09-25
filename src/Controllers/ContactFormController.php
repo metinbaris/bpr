@@ -37,15 +37,26 @@ class ContactFormController extends BaseController
      */
     public function submitCustomerEnquiry()
     {
+        $isMailSent = false;
         if ($this->contactFormValidator->validate($_POST)) {
             $enquiry = $this->enquiry->setEnquiry($_POST);
             $this->store($enquiry->getTableName(), $enquiry->getEnquiry());
             $this->sessionPut('customerName', $enquiry->getName());
-            //$this->newEnquiryMail->sendMail($enquiry);
-
-            $this->redirect('/enquiry-successfully-saved');
-        } else {
-            $this->view('home', $_POST);
+            $isMailSent = $this->newEnquiryMail->sendMail($enquiry);
         }
+
+        return $this->responseClientRequest($isMailSent);
+    }
+
+    /**
+     * @param bool $isMailSent
+     */
+    private function responseClientRequest($isMailSent)
+    {
+        if ($isMailSent === true) {
+            return $this->redirect('/enquiry-successfully-saved');
+        }
+
+        return $this->view('home', $_POST);
     }
 }
