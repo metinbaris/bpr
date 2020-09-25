@@ -25,4 +25,31 @@ class BaseController
 
         return $database;
     }
+
+    /**
+     * @param string $url
+     */
+    protected function redirect($url)
+    {
+        header('Location: ' . $url);
+    }
+
+    /**
+     * @param string $sessionName
+     * @param string $value
+     */
+    protected function sessionPut($sessionName, $value)
+    {
+        session_start();
+        $_SESSION[ $sessionName ] = $value;
+    }
+
+    /**
+     * @param string $tableName
+     * @param array $array
+     */
+    protected function store($tableName, $array)
+    {
+        $this->database()->insert($tableName, $array);
+    }
 }

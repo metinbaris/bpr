@@ -9,7 +9,8 @@
 <body>
 <div class="container">
     <div class="successMessage">
-        <p>Hey <?php echo (isset($_SESSION[ 'customerName' ])) ? $_SESSION[ 'customerName' ] : '' ?>,
+        <p>Hey <?php echo (isset($_SESSION[ 'customerName' ])) ? $_SESSION[ 'customerName' ] : '';
+            unset($_SESSION[ 'customerName' ]); ?>,
             thanks for sending us a message.</p>
         <p>We are going to get back to you, as soon as possible !</p>
         <p>Redirecting you back in <span id="countDown"></span>...</p>

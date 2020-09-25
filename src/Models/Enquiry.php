@@ -6,30 +6,16 @@ class Enquiry extends BaseModel
 {
     protected $table = 'enquiries';
     const Type_of_Enquiry_General = 'General';
+    const Type_of_Enquiry_General_Cast = 0;
     const Type_of_Enquiry_Regarding_An_Order = 'Regarding An Order';
-    const Enquiry_Types = [self::Type_of_Enquiry_Regarding_An_Order, self::Type_of_Enquiry_General];
+    const Type_of_Enquiry_Regarding_An_Order_Cast = 1;
+    const Enquiry_Types = [self::Type_of_Enquiry_General, self::Type_of_Enquiry_Regarding_An_Order];
     protected $id;
     protected $name;
     protected $email;
     protected $enquiry_type;
     protected $orderNumber;
     protected $message;
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     /**
      * @return mixed
@@ -72,11 +58,15 @@ class Enquiry extends BaseModel
     }
 
     /**
-     * @param mixed $enquiry_type
+     * @param int $enquiry_type
      */
     public function setEnquiryType($enquiry_type)
     {
-        $this->enquiry_type = $enquiry_type;
+        if ($enquiry_type === self::Type_of_Enquiry_Regarding_An_Order) {
+            $this->enquiry_type = self::Type_of_Enquiry_Regarding_An_Order_Cast;
+        } else {
+            $this->enquiry_type = self::Type_of_Enquiry_General_Cast;
+        }
     }
 
     /**
@@ -108,7 +98,11 @@ class Enquiry extends BaseModel
      */
     public function setOrderNumber($orderNumber)
     {
-        $this->orderNumber = $orderNumber;
+        if (! empty ($orderNumber)) {
+            $this->orderNumber = $orderNumber;
+        } else {
+            $this->orderNumber = null;
+        }
     }
 
     /**
@@ -117,5 +111,34 @@ class Enquiry extends BaseModel
     public function getTableName()
     {
         return $this->table;
+    }
+
+    /**
+     * @param array $data
+     * @return Enquiry $this
+     */
+    public function setEnquiry($data)
+    {
+        $this->setName($data[ 'customer_name' ]);
+        $this->setEmail($data[ 'email_address' ]);
+        $this->setEnquiryType($data[ 'enquiry_type' ]);
+        $this->setOrderNumber($data[ 'order_number' ]);
+        $this->setMessage($data[ 'message' ]);
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getEnquiry()
+    {
+        return [
+            'name' => $this->getName(),
+            'email' => $this->getEmail(),
+            'enquiry_type' => $this->getEnquiryType(),
+            'order_number' => $this->getOrderNumber(),
+            'message' => $this->getMessage()
+        ];
     }
 }
