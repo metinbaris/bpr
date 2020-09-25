@@ -12,7 +12,7 @@ class Connection
             return new PDO(
                 getenv('DB_CONNECTION') .
                 ':host=' . getenv('DB_HOST') .
-                ';dbname=' . getenv('DB_DATABASE'),
+                ';dbname=' . getenv('DB_DATABASE') . ';charset=utf8mb4',
                 getenv('DB_USERNAME'), getenv('DB_PASSWORD'));
         } catch (\Exception $exception) {
             var_dump($exception->getMessage());

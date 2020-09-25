@@ -1,3 +1,4 @@
+USE bpr;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -22,7 +23,7 @@ CREATE TABLE `enquiries` (
                              `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
                              `email` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
                              `enquiry_type` tinyint(4) NOT NULL COMMENT '0: General, 1:Regarding An Order',
-                             `order_number` int(11) NULL,
+                             `order_number` varchar(6) NULL,
                              `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
                              `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
                              `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP

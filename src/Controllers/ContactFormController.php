@@ -2,6 +2,8 @@
 
 namespace BasicFormApp\Controllers;
 
+use BasicFormApp\Mail\NewEnquiry;
+use BasicFormApp\Mail\NewEnquiryMail;
 use BasicFormApp\Models\Enquiry;
 use BasicFormApp\Validators\ContactFormValidator;
 
@@ -11,27 +13,37 @@ class ContactFormController extends BaseController
      * @var ContactFormValidator
      */
     protected $contactFormValidator;
-
     /**
      * @var Enquiry
      */
     protected $enquiry;
+    /**
+     * @var NewEnquiryMail
+     */
+    protected $newEnquiryMail;
 
+    /**
+     * ContactFormController constructor.
+     */
     public function __construct()
     {
         $this->contactFormValidator = new ContactFormValidator();
         $this->enquiry = new Enquiry();
+        $this->newEnquiryMail = new NewEnquiryMail();
     }
 
-    /** Contact form submitter*/
+    /**
+     * Contact form submitter
+     */
     public function submitCustomerEnquiry()
     {
         if ($this->contactFormValidator->validate($_POST)) {
-            $this->enquiry->setEnquiry($_POST);
-            $this->store($this->enquiry->getTableName(), $this->enquiry->getEnquiry());
-            $this->sessionPut('customerName', $this->enquiry->getName());
+            $enquiry = $this->enquiry->setEnquiry($_POST);
+            $this->store($enquiry->getTableName(), $enquiry->getEnquiry());
+            $this->sessionPut('customerName', $enquiry->getName());
+            //$this->newEnquiryMail->sendMail($enquiry);
 
-            return $this->redirect('/enquiry-successfully-saved');
+            $this->redirect('/enquiry-successfully-saved');
         } else {
             $this->view('home', $_POST);
         }

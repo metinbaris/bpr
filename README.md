@@ -1,14 +1,18 @@
 ## Installation, Dev Test Task
-- Go to path-to-your-project and run
+- Go to path of your project install dependencies
 ```
 composer install
 ```
-- Create an empty MySQL database called "bpr" and import bpr.sql
+- Create an empty MySQL database called "bpr"
+```
+CREATE DATABASE bpr CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+- Import the sql file called 'brp.sql'
 ```
 mysql -u{yourusername} -p{yourpass} bpr < bpr.sql
 ```
 - Change the name of your <strong>env.example</strong> to <strong>.env</strong>
-and change the config accordingly
+and set database and mail credentials
 
 ### Server Requirements
 - Composer

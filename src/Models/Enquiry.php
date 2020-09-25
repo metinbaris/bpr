@@ -9,7 +9,7 @@ class Enquiry extends BaseModel
     const Type_of_Enquiry_General_Cast = 0;
     const Type_of_Enquiry_Regarding_An_Order = 'Regarding An Order';
     const Type_of_Enquiry_Regarding_An_Order_Cast = 1;
-    const Enquiry_Types = [self::Type_of_Enquiry_General, self::Type_of_Enquiry_Regarding_An_Order];
+    const Enquiry_Types = [0 => self::Type_of_Enquiry_General, 1 => self::Type_of_Enquiry_Regarding_An_Order];
     protected $id;
     protected $name;
     protected $email;
@@ -18,7 +18,7 @@ class Enquiry extends BaseModel
     protected $message;
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
@@ -26,7 +26,7 @@ class Enquiry extends BaseModel
     }
 
     /**
-     * @param mixed $name
+     * @param string $name
      */
     public function setName($name)
     {
@@ -34,7 +34,7 @@ class Enquiry extends BaseModel
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getEmail()
     {
@@ -42,7 +42,7 @@ class Enquiry extends BaseModel
     }
 
     /**
-     * @param mixed $email
+     * @param string $email
      */
     public function setEmail($email)
     {
@@ -50,11 +50,19 @@ class Enquiry extends BaseModel
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getEnquiryType()
     {
         return $this->enquiry_type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEnquiryTypeReadable()
+    {
+        return self::Enquiry_Types[$this->enquiry_type] . ' ';
     }
 
     /**
@@ -70,7 +78,7 @@ class Enquiry extends BaseModel
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getMessage()
     {
@@ -78,7 +86,7 @@ class Enquiry extends BaseModel
     }
 
     /**
-     * @param mixed $message
+     * @param $message
      */
     public function setMessage($message)
     {
@@ -86,7 +94,7 @@ class Enquiry extends BaseModel
     }
 
     /**
-     * @return mixed
+     * @return int|null
      */
     public function getOrderNumber()
     {
@@ -94,7 +102,7 @@ class Enquiry extends BaseModel
     }
 
     /**
-     * @param mixed $orderNumber
+     * @param int|null $orderNumber
      */
     public function setOrderNumber($orderNumber)
     {
