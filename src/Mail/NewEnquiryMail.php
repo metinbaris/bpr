@@ -50,7 +50,7 @@ class NewEnquiryMail
      */
     private function setMailServerSettings(PHPMailer $mail)
     {
-        $mail->SMTPDebug = SMTP::DEBUG_SERVER;// Enable verbose debug output
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;// Enable verbose debug output
         $mail->isSMTP();// Send using SMTP
         $mail->Host = getenv('SMTP_HOSTNAME');// Set the SMTP server to send through
         $mail->SMTPAuth = true;// Enable SMTP authentication
