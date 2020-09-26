@@ -38,7 +38,7 @@ class NewEnquiryMail
             $mail->Body = $this->getBody($enquiry);
             //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
             ob_start();
-            $mail->send();
+            //$mail->send();
             ob_end_flush();
 
             return true;
@@ -54,12 +54,12 @@ class NewEnquiryMail
     {
         $mail->SMTPDebug = SMTP::DEBUG_SERVER;// Enable verbose debug output
         $mail->isSMTP();// Send using SMTP
-        $mail->Host = getenv('MY9_SMTP_HOSTNAME');// Set the SMTP server to send through
+        $mail->Host = getenv('SMTP_HOSTNAME');// Set the SMTP server to send through
         $mail->SMTPAuth = true;// Enable SMTP authentication
-        $mail->Username = getenv('MY9_MAIL_USERNAME');// SMTP username
-        $mail->Password = getenv('MY9_MAIL_PASSWORD');// SMTP password
-        $mail->SMTPSecure = getenv('MY9_MAIL_ENCRYPTION');// Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-        $mail->Port = getenv('MY9_SMTP_PORT');// TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+        $mail->Username = getenv('MAIL_USERNAME');// SMTP username
+        $mail->Password = getenv('MAIL_PASSWORD');// SMTP password
+        $mail->SMTPSecure = getenv('MAIL_ENCRYPTION');// Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+        $mail->Port = getenv('SMTP_PORT');// TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
     }
 
     /**
