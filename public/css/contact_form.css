@@ -112,3 +112,15 @@
         margin-top: 11px;
     }
 }
+
+.form-control.error input {
+    border: 1px solid #e74c3c;
+}
+
+.form-control.error textarea {
+    border: 1px solid #e74c3c;
+}
+
+.form-control.error small {
+    color: #e74c3c;
+}
