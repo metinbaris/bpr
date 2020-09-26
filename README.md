@@ -16,6 +16,6 @@ and set database and mail credentials
 
 ### Server Requirements
 - Composer
-- PHP 5.6.0
+- PHP 5.6.0 (PHP.ini output_buffering = on)
 - MySQL 5.7.24 or equal (CHARSET: utf8mb4, COLLATE: utf8mb4_unicode_ci)
 - Apache 2.4, VC11 or equal

@@ -56,6 +56,9 @@ function isEnquiryTypeRegardingAnOrder (element) {
     checkEmpty(orderNumber)
     checkIsNumeric(orderNumber)
     checkElementNumberCharLength(orderNumber, CONSTANTS.EnquiryModel.Order_Number_Char_Length)
+  } else {
+    orderNumber.value = ''
+    removeErrorFor(orderNumber)
   }
 }
 

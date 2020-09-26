@@ -38,7 +38,7 @@ class NewEnquiryMail
             $mail->Body = $this->getBody($enquiry);
             //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
             ob_start();
-            //$mail->send();
+            $mail->send();
             ob_end_flush();
 
             return true;
