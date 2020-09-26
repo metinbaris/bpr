@@ -21,7 +21,7 @@ class NewEnquiryMail
         try {
             $this->setMailServerSettings($mail);
             //Recipients
-            $mail->setFrom('metin@bsign.com.tr', '');
+            $mail->setFrom(getenv('MAIL_USERNAME'), '');
             //$mail->addAddress('joe@example.net', 'Joe User');// Add a recipient
             $mail->addAddress(getenv('MAIL_RECEIVER_OF_CONTACT_FORM'));// Name is optional
             //$mail->addReplyTo('info@example.com', 'Information');

@@ -17,7 +17,7 @@ class Connection
 
             return $pdo;
         } catch (\Exception $exception) {
-            var_dump($exception->getMessage());
+            //var_dump($exception->getMessage());
         }
     }
 }
