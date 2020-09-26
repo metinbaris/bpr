@@ -21,7 +21,7 @@ class NewEnquiryMail
         try {
             $this->setMailServerSettings($mail);
             //Recipients
-            $mail->setFrom(getenv('MAIL_USERNAME'), '');
+            $mail->setFrom(getenv('MAIL_USERNAME'), getenv('MAIL_SENDER_OF_CONTACT_FORM'));
             //$mail->addAddress('joe@example.net', 'Joe User');// Add a recipient
             $mail->addAddress(getenv('MAIL_RECEIVER_OF_CONTACT_FORM'));// Name is optional
             //$mail->addReplyTo('info@example.com', 'Information');
@@ -38,9 +38,10 @@ class NewEnquiryMail
             $mail->Body = $this->getBody($enquiry);
             //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
             ob_start();
-            $mail->send();
-            ob_end_flush();
-
+            if ($mail->send()) {
+                ob_end_flush();
+                header('HTTP/1.1 200 OK', true, 200);
+            }
             return true;
         } catch (Exception $e) {
             return false;
