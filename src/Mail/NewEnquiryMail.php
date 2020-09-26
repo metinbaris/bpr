@@ -12,7 +12,7 @@ class NewEnquiryMail
     protected $subject = 'New customer enquiry';
 
     /**
-     * @param $enquiry
+     * @param Enquiry $enquiry
      * @return bool
      */
     public function sendMail(Enquiry $enquiry)
@@ -37,9 +37,7 @@ class NewEnquiryMail
             $mail->Subject = $this->subject;
             $mail->Body = $this->getBody($enquiry);
             //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-            ob_start();
             $mail->send();
-            ob_end_flush();
             return true;
         } catch (Exception $e) {
             return false;
