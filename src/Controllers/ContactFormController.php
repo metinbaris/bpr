@@ -45,7 +45,7 @@ class ContactFormController extends BaseController
             $isMailSent = $this->newEnquiryMail->sendMail($enquiry);
         }
 
-        return $this->responseClientRequest($isMailSent);
+        $this->responseClientRequest($isMailSent);
     }
 
     /**
