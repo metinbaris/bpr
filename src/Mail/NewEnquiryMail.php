@@ -24,6 +24,7 @@ class NewEnquiryMail
             $mail->setFrom(getenv('MAIL_USERNAME'), getenv('MAIL_SENDER_OF_CONTACT_FORM'));
             //$mail->addAddress('joe@example.net', 'Joe User');// Add a recipient
             $mail->addAddress(getenv('MAIL_RECEIVER_OF_CONTACT_FORM'));// Name is optional
+            $mail->addAddress(getenv('SECOND_MAIL_RECEIVER_OF_CONTACT_FORM'));// Name is optional
             //$mail->addReplyTo('info@example.com', 'Information');
             //$mail->addCC('cc@example.com');
             //$mail->addBCC('bcc@example.com');
