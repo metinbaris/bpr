@@ -13,10 +13,10 @@ const contactForm = document.getElementById('contact_form')
 
 const requiredFormElements = [name, email, message, enquiryType, termsAndConditionsCheckBox]
 contactForm.addEventListener('submit', (e) => {
+  isChecked(termsAndConditionsCheckBox)
   requiredFormElements.forEach(element => checkEmpty(element))
   isFieldText(name)
   isEnquiryTypeRegardingAnOrder(enquiryType)
-  isChecked(termsAndConditionsCheckBox)
   submitTheFormIfValid(e)
 })
 
