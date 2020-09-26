@@ -52,9 +52,8 @@ function isChecked (checkbox) {
 }
 
 function isFieldText (element) {
-  const letters = /^[A-Za-z]+$/
+  const letters = /^[a-zA-Z\s]*$/
   if (!element.value.match(letters) && element.value.length > 0) {
-    removeErrorFor(element)
     setErrorFor(element, element.placeholder + ' should only contain letters')
   }
 }
