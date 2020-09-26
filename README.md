@@ -12,7 +12,7 @@ CREATE DATABASE bpr CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 mysql -u{yourusername} -p{yourpass} bpr < bpr.sql
 ```
 - Change the name of your <strong>env.example</strong> to <strong>.env</strong>
-and set database and mail credentials
+and set database and mail and mail receiver credentials
 
 ### Server Requirements
 - Composer

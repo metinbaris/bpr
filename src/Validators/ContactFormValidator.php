@@ -63,7 +63,7 @@ class ContactFormValidator extends BaseFormValidator implements ValidatorInterfa
     {
         $this->checkInputIsEmpty($name, 'Name');
         if (! preg_match("/^[a-zA-Z-' ]*$/", $name)) {
-            throw new Exception("Only letters and white spaces are allowed");
+            throw new Exception("Only letters and white spaces are allowed in name field");
         }
 
         return true;
