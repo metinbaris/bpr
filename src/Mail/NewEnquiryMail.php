@@ -37,11 +37,9 @@ class NewEnquiryMail
             $mail->Subject = $this->subject;
             $mail->Body = $this->getBody($enquiry);
             //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-            ob_start();
-            if ($mail->send()) {
-                ob_end_flush();
-                header('HTTP/1.1 200 OK', true, 200);
-            }
+            //ob_start() (Needed on my local computer not on server);
+            $mail->send();
+            //ob_end_flush();
             return true;
         } catch (Exception $e) {
             return false;
