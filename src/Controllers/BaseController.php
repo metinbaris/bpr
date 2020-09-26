@@ -21,7 +21,8 @@ class BaseController
      */
     public function database()
     {
-        $database = new QueryBuilder(Connection::make());
+        $pdo = Connection::make();
+        $database = new QueryBuilder($pdo);
 
         return $database;
     }
