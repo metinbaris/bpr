@@ -13,9 +13,10 @@ const contactForm = document.getElementById('contact_form')
 
 const requiredFormElements = [name, email, message, enquiryType, termsAndConditionsCheckBox]
 contactForm.addEventListener('submit', (e) => {
-  isChecked(termsAndConditionsCheckBox)
-  isEnquiryTypeRegardingAnOrder(enquiryType)
   requiredFormElements.forEach(element => checkEmpty(element))
+  isFieldText(name)
+  isEnquiryTypeRegardingAnOrder(enquiryType)
+  isChecked(termsAndConditionsCheckBox)
   submitTheFormIfValid(e)
 })
 
@@ -47,6 +48,14 @@ function isChecked (checkbox) {
     checkbox.value = ''
   } else {
     checkbox.value = 'on'
+  }
+}
+
+function isFieldText (element) {
+  const letters = /^[A-Za-z]+$/
+  if (!element.value.match(letters) && element.value.length > 0) {
+    removeErrorFor(element)
+    setErrorFor(element, element.placeholder + ' should only contain letters')
   }
 }
 
