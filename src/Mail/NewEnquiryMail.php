@@ -73,10 +73,10 @@ class NewEnquiryMail
 <div style="padding:20px;"><h2 style="padding-left:40px;">Hey, we have new customer enquiry !</h2>
 <p style="padding-left:40px; font-size:18px;">Here are the details of the contact form</p>
 <ul style="list-style: none; line-height: 32px; border-top:1px solid #2c0020; border-bottom: 1px solid #2c0020;">
-<li><strong>Customer Name :</strong>' . $enquiry->getName() . '</li>
-<li><strong>Enquiry Type :</strong>' . $enquiry->getEnquiryTypeReadable() . $orderNumber . '</li>
-<li><strong>Customer Email :</strong>' . $enquiry->getEmail() . '</li>
-<li><strong>Customer Message :</strong>' . $enquiry->getMessage() . '</li>
+<li><strong>Customer Name : </strong>' . $enquiry->getName() . '</li>
+<li><strong>Enquiry Type : </strong>' . $enquiry->getEnquiryTypeReadable() . $orderNumber . '</li>
+<li><strong>Customer Email : </strong>' . $enquiry->getEmail() . '</li>
+<li><strong>Customer Message : </strong>' . $enquiry->getMessage() . '</li>
 </ul><p style="padding-left:40px; font-size:14px;">Wish you great day :)</p></div></body>';
     }
 }
