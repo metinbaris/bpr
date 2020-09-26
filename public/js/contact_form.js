@@ -21,7 +21,7 @@ contactForm.addEventListener('submit', (e) => {
 
 function checkEmpty (element) {
   if (element.value === '') {
-    setErrorFor(element, element.placeholder + ' cannot be blank')
+    setErrorFor(element, element.placeholder + ' field cannot be blank')
   } else {
     removeErrorFor(element)
   }
@@ -50,10 +50,24 @@ function isChecked (checkbox) {
   }
 }
 
-/*Order number is required*/
+/*Order number is required, check the validation of it*/
 function isEnquiryTypeRegardingAnOrder (element) {
   if (element.value === CONSTANTS.EnquiryModel.Type_of_Enquiry_Regarding_An_Order) {
     checkEmpty(orderNumber)
+    checkIsNumeric(orderNumber)
+    checkElementNumberCharLength(orderNumber, CONSTANTS.EnquiryModel.Order_Number_Char_Length)
+  }
+}
+
+function checkIsNumeric (element) {
+  if (!/^\d+$/.test(element.value) && element.value.length > 0) {
+    setErrorFor(element, element.placeholder + ' should be numeric')
+  }
+}
+
+function checkElementNumberCharLength (element, charLength) {
+  if (element.value.length !== charLength && element.value.length > 0) {
+    setErrorFor(element, element.placeholder + ' should have ' + charLength + ' digits')
   }
 }
 

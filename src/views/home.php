@@ -44,8 +44,7 @@
              class="<?php echo isset($_POST[ 'enquiry_type' ]) && $_POST[ 'enquiry_type' ] === 'Regarding An Order' ? 'form-control' : ' hidden form-control' ?>">
             <label for="order_number">Order Id* (E.g. 004389)</label>
             <small class="hidden"> Error Message</small>
-            <input type="text" id="order_number" name="order_number" minlength="6" maxlength="6"
-                   placeholder="Order Number"
+            <input type="text" id="order_number" name="order_number" placeholder="Order Number" maxlength="6"
                    value="<?php echo isset($_POST[ 'order_number' ]) ? $_POST[ 'order_number' ] : '' ?>"
             >
         </div>
