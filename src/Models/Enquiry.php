@@ -10,6 +10,7 @@ class Enquiry extends BaseModel
     const Type_of_Enquiry_Regarding_An_Order = 'Regarding An Order';
     const Type_of_Enquiry_Regarding_An_Order_Cast = 1;
     const Enquiry_Types = [0 => self::Type_of_Enquiry_General, 1 => self::Type_of_Enquiry_Regarding_An_Order];
+    const Enquiry_Order_Number_Char_Length = 6;
     protected $id;
     protected $name;
     protected $email;

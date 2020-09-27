@@ -71,7 +71,7 @@ class ContactFormValidator extends BaseFormValidator implements ValidatorInterfa
 
     /**
      * @param string $enquiryType
-     * @param integer $orderNumber
+     * @param int $orderNumber
      * @throws Exception
      */
     private function validateOrderNumberAndEnquiryType($enquiryType, $orderNumber)
@@ -80,6 +80,7 @@ class ContactFormValidator extends BaseFormValidator implements ValidatorInterfa
         if ($enquiryType === Enquiry::Type_of_Enquiry_Regarding_An_Order) {
             $this->checkInputIsEmpty($orderNumber, 'Order Number');
             $this->isNumeric($orderNumber);
+            $this->checkCharLength($orderNumber, Enquiry::Enquiry_Order_Number_Char_Length);
         }
     }
 

@@ -56,7 +56,7 @@ class ContactFormController extends BaseController
         if ($isMailSent === true) {
             $this->redirect('/enquiry-successfully-saved');
         } else {
-            $this->redirect('/', $_POST);
+            $this->view('home', $_POST);
         }
     }
 }

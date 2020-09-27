@@ -29,10 +29,24 @@ class BaseFormValidator
      */
     protected function isNumeric($value)
     {
-        if (!is_numeric($value)) {
+        if (! is_numeric($value)) {
             throw new Exception("$value is not numeric");
         }
 
         return true;
+    }
+
+    /**
+     * @param string $value
+     * @param int $length
+     * @return bool
+     * @throws Exception
+     */
+    protected function checkCharLength($value, $length)
+    {
+        if (strlen($value) === $length) {
+            return true;
+        }
+        throw new Exception("$value is not correct");
     }
 }
