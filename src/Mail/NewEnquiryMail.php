@@ -69,15 +69,20 @@ class NewEnquiryMail
     {
         $orderNumber = $enquiry->getOrderNumber();
         $orderNumber = empty($orderNumber) ? '' : '<strong> | Order Number : </strong>' . $orderNumber;
+        $body = str_replace([
+            '{$name}',
+            '{$order}',
+            '{$email}',
+            '{$message}'
+        ], [
+            $enquiry->getName(),
+            $enquiry->getEnquiryTypeReadable() . $orderNumber,
+            $enquiry->getEmail(),
+            $enquiry->getMessage()
+        ],
+            file_get_contents(__DIR__ . '/../views/emails/new_enquiry.html')
+        );
 
-        return '<body style="background-image: linear-gradient(110deg, #d57eeb 0%, #fccb90 100%); color:#2c0020;">
-<div style="padding:20px;"><h2 style="padding-left:40px;">Hey, we have new customer enquiry !</h2>
-<p style="padding-left:40px; font-size:18px;">Here are the details of the contact form</p>
-<ul style="list-style: none; line-height: 32px; border-top:1px solid #2c0020; border-bottom: 1px solid #2c0020;">
-<li><strong>Customer Name : </strong>' . $enquiry->getName() . '</li>
-<li><strong>Enquiry Type : </strong>' . $enquiry->getEnquiryTypeReadable() . $orderNumber . '</li>
-<li><strong>Customer Email : </strong>' . $enquiry->getEmail() . '</li>
-<li><strong>Customer Message : </strong>' . $enquiry->getMessage() . '</li>
-</ul><p style="padding-left:40px; font-size:14px;">Wish you great day :)</p></div></body>';
+        return $body;
     }
 }
